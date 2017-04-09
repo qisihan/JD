@@ -1,0 +1,62 @@
+{
+	"message":"SUCCESS",
+	"status":"200",
+	"groomList":[
+	    {
+	    	"gid":1,
+	    	"gtitle":"澳洲进口牛奶Vitalife低脂牛奶",
+	    	"gprice":"45.36",
+	    	"gimg":"img/goods/groom1_03.jpg",
+	    	"glink":"goods.html"
+	    },
+	    {
+	    	"gid":2,
+	    	"gtitle":"机械革命(MECHREVO)MR 深海泰坦",
+	    	"gprice":"4399.36",
+	    	"gimg":"img/goods/groom2_03.jpg",
+	    	"glink":"goods.html"
+	    },
+	    {
+	    	"gid":3,
+	    	"gtitle":"澳洲进口牛奶Vitalife低脂牛奶",
+	    	"gprice":"145.36",
+	    	"gimg":"img/goods/groom3_03.jpg",
+	    	"glink":"goods.html"
+	    },
+	    {
+	    	"gid":4,
+	    	"gtitle":"机械革命(MECHREVO)MR 深海泰坦",
+	    	"gprice":"456.36",
+	    	"gimg":"img/goods/groom4_03.jpg",
+	    	"glink":"goods.html"
+	    },
+	    {
+	    	"gid":5,
+	    	"gtitle":"澳洲进口牛奶Vitalife低脂牛奶",
+	    	"gprice":"45.36",
+	    	"gimg":"img/goods/groom1_03.jpg",
+	    	"glink":"goods.html"
+	    },
+	    {
+	    	"gid":6,
+	    	"gtitle":"机械革命(MECHREVO)MR 深海泰坦",
+	    	"gprice":"4399.36",
+	    	"gimg":"img/goods/groom2_03.jpg",
+	    	"glink":"goods.html"
+	    },
+	    {
+	    	"gid":7,
+	    	"gtitle":"澳洲进口牛奶Vitalife低脂牛奶",
+	    	"gprice":"145.36",
+	    	"gimg":"img/goods/groom3_03.jpg",
+	    	"glink":"goods.html"
+	    },
+	    {
+	    	"gid":8,
+	    	"gtitle":"机械革命(MECHREVO)MR 深海泰坦",
+	    	"gprice":"456.36",
+	    	"gimg":"img/goods/groom4_03.jpg",
+	    	"glink":"goods.html"
+	    }
+	]
+}

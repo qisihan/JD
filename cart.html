@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="js/mui.min.js"></script>
+		<!--<link rel="stylesheet" href="css/mui.min.css" />-->
+		<link rel="stylesheet" href="css/frame.css" />
+		<link rel="stylesheet" href="css/cart.css" />
+	</head>
+
+	<body>
+		<!-- 页面容器 -->
+		<div id="page">
+			<!-- 头部信息部分 -->
+			<div id="header" class="header">
+				<div class="container clear-fix">
+					<!-- style="padding: 0;" -->
+					<div class="head_title">购物车</div>
+					<div class="head_news fr"><i><img src="img/icon/icon_5.png" alt=""></i></div>
+					<div class="head_edit fr" href="">编辑</a>
+					</div>
+				</div>
+			</div>
+			<!-- 主体内容部分 -->
+			<div id="content" class="content">
+				<div class="edit" v-if="tipSwitch">
+					<div class="container">
+						<p>购物车中有1件商品已降价，快去看看<i @click="tipSwitch = !tipSwitch">×</i></p>
+					</div>
+				</div>
+				<div class="cart_list">
+					<div class="store" v-for="(item,key) in cartList">
+						<div class="stroe_info">
+							<div class="container">
+								<button data-option="stroe" class="stroe_all" :class="{active:item.checked}" @click="checkMore(item)"><input class="hide" type="checkbox" value=""></button>
+								<div class="stroe_name" v-text="item.shopName"></div>
+								<div class="coupon" v-show="item.isCoupon"><em></em> 优惠券</div>
+							</div>
+						</div>
+						<template v-for="(goods,index) in item.goods">
+							<div class="goods">
+								<div class="container clear-fix">
+									<div class="goods_option fl"><button class="stroe_all" :class="{active:goods.checked}" @click="check(goods)" data-active="active"><input class="hide" type="checkbox" value=""></button></div>
+									<div class="goods_content fl">
+										<div class="goods_sales">
+											<div class="full_cut ell"><i v-text="goods.goodsTips"></i>{{goods.goodsActive}}</div>
+										</div>
+										<div class="goods_info clear-fix">
+											<a class="goods_img fl" href="javascript:;"><img :src="goods.goodsImg" width="108" height="108" /></a>
+											<div class="goods_title ell" v-text="goods.goodsName"></div>
+											<div class="goods_params" v-text="goods.goodsParameter"></div>
+											<div class="goods_price fl">{{goods.goodsPrice * goods.goodsNum | formartMoney}}</div>
+											<div class="in_de fr">
+												<li @click="chengsNum(goods,-1)">－</li>
+												<li v-text="goods.goodsNum"></li>
+												<li @click="chengsNum(goods,1)">＋</li>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="line"></div>
+						</template>
+
+					</div>
+					<!--<div class="store">
+						<div class="stroe_info">
+							<div class="container">
+								<button data-option="stroe" class="stroe_all"><input class="hide" type="checkbox" value=""></button>
+								<div class="stroe_name">京东自营</div>
+								<div class="coupon"><em></em> 优惠券</div>
+							</div>
+						</div>
+						<div class="goods">
+							<div class="container clear-fix">
+								<div class="goods_option fl"><button class="stroe_all active"><input class="hide" type="checkbox" value=""></button></div>
+								<div class="goods_content fl">
+									<div class="goods_sales">
+										<div class="full_cut ell"><i>换购</i>已购满2500.00元，可加价449.00元换购商品，或查看其他活动商品</div>
+									</div>
+									<div class="goods_info clear-fix">
+										<a class="goods_img fl" href=""><img src="img/goods/img31.jpg" width="108" height="108" /></a>
+										<div class="goods_title ell">机械革命(MECHREVO)MR X6Ti 15.6英寸游戏笔记本(i7-6700HQ 8G)</div>
+										<div class="goods_params">颜色:X6Ti【i7六代 128G】</div>
+										<div class="goods_price fl">￥6999.00</div>
+										<div class="in_de fr">
+											<li>－</li>
+											<li>1</li>
+											<li>＋</li>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="line"></div>
+						<div class="goods">
+							<div class="container clear-fix">
+								<div class="goods_option fl"><button class="stroe_all"><input class="hide" type="checkbox" value=""></button></div>
+								<div class="goods_content fl">
+									<div class="goods_sales">
+										<div class="full_cut ell"><i>满减</i>购满99.00元，即享优惠，去凑单</div>
+									</div>
+									<div class="goods_info clear-fix">
+										<a class="goods_img fl" href=""><img src="img/goods/img32.jpg" width="108" height="108" /></a>
+										<div class="goods_title ell">【京东超市】滴露Dettol消毒液500ml家居衣物消毒除菌液</div>
+										<div class="goods_params">颜色:500ml</div>
+										<div class="goods_price fl">￥33.90</div>
+										<div class="in_de fr">
+											<li>－</li>
+											<li>1</li>
+											<li>＋</li>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="store">
+						<div class="stroe_info">
+							<div class="container">
+								<button data-option="stroe" class="stroe_all active"><input class="hide" type="checkbox" value=""></button>
+								<div class="stroe_name">麦本本旗舰店</div>
+								<div class="coupon"><em></em> 优惠券</div>
+							</div>
+						</div>
+						<div class="goods">
+							<div class="container clear-fix">
+								<div class="goods_option fl"><button class="stroe_all active"><input class="hide" type="checkbox" value=""></button></div>
+								<div class="goods_content fl">
+									<div class="goods_sales">
+										<div class="full_cut ell"><i>换购</i>已购满2500.00元，可加价449.00元换购商品，或查看其他活动商品</div>
+									</div>
+									<div class="goods_info clear-fix">
+										<a class="goods_img fl" href=""><img src="img/goods/img31.jpg" width="108" height="108" /></a>
+										<div class="goods_title ell">机械革命(MECHREVO)MR X6Ti 15.6英寸游戏笔记本(i7-6700HQ 8G)</div>
+										<div class="goods_params">颜色:X6Ti【i7六代 128G】</div>
+										<div class="goods_price fl">￥6999.00</div>
+										<div class="in_de fr">
+											<li>－</li>
+											<li>1</li>
+											<li>＋</li>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>-->
+				</div>
+				<div class="settlement">
+					<div class="goods_option fl"><button data-option="all" class="stroe_all" :class="{active:checkedAll}" @click="checkAll()"><input class="hide" type="checkbox" value=""></button></div>
+					<div class="settlement_sum fl"><em>全选</em>合计：{{totalMoney | formartMoney}}</div>
+					<div class="settlement_btn fr">去结算<em v-text="totalNum"></em></div>
+				</div>
+			</div>
+			<!-- 底部导航 -->
+			<div id="footer" class="footer">
+				<div class="container" style="padding: 0;">
+					<ul class="footer-menu clear-fix">
+						<li data-target="index"><i></i>首页</li>
+						<li data-target="classify"><i></i>分类</li>
+						<li data-target="find"><i><em class="find"></em></i>发现</li>
+						<li class="active" data-target="cart"><i><em class="cart">8</em></i>购物车</li>
+						<li data-target="user"><i></i>我的</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/vue.min.js"></script>
+		<script type="text/javascript" src="js/vue-resource.min.js"></script>
+		<script type="text/javascript">
+			var cart = new Vue({
+				el: '#page',
+				data: {
+					cartList: [],
+					checkedAll: false,
+					tipSwitch: true
+				},
+				computed: {
+					totalMoney: function() {
+						var total = 0;
+						this.cartList.forEach(function(obj, index) {
+							obj.goods.forEach(function(goods, index) {
+								if(goods.checked) {
+									total += goods.goodsPrice * goods.goodsNum;
+								}
+							})
+						})
+						return total;
+					},
+					totalNum: function() {
+						var num = 0;
+						this.cartList.forEach(function(obj, index) {
+							obj.goods.forEach(function(goods, index) {
+								if(goods.checked) {
+									num++;
+								}
+							})
+						})
+						return '(' + num + ')';
+					}
+				},
+				mounted: function() {
+					this.run();
+					Vue.nextTick(function() {
+
+					})
+				},
+				filters: {
+					formartMoney: function(value) {
+						return '￥' + parseFloat(value).toFixed(2);
+					}
+				},
+				methods: {
+					run: function() {
+						this.$http.get('data/cart.json').then(function(res) {
+							var data = res.data;
+							console.log(data);
+							if(data.status == 200) {
+								this.cartList = data.cartList;
+							} else {
+								console.log(data.message);
+							}
+						}, function(err) {
+							console.log(JSON.stringify(err));
+							this.cartList = err.data.cartList;
+						})
+					},
+					chengsNum: function(goods, type) {
+						if(type > 0) {
+							goods.goodsNum++;
+						} else {
+							if(goods.goodsNum > 1) {
+								goods.goodsNum--;
+							}
+						}
+					},
+					check: function(obj) {
+						if(typeof obj.checked == 'undefined') {
+							this.$set(obj, "checked", true);
+						} else {
+							if(obj.checked) {
+								obj.checked = false;
+							} else {
+								obj.checked = true;
+							}
+						}
+					},
+					checkAll: function() {
+						var _this = this;
+						this.cartList.forEach(function(obj, index) {
+							if(typeof obj.checked == 'undefined') {
+								_this.$set(obj, "checked", !_this.checkedAll);
+							} else {
+								obj.checked = !_this.checkedAll;
+							}
+							obj.goods.forEach(function(goods, index) {
+								if(typeof goods.checked == 'undefined') {
+									_this.$set(goods, "checked", !_this.checkedAll);
+								} else {
+									goods.checked = !_this.checkedAll
+								}
+							})
+						})
+						this.checkedAll = !this.checkedAll;
+
+					},
+					checkMore: function(obj) {
+						var _this = this;
+						this.check(obj);
+						obj.goods.forEach(function(goods, index) {
+							if(typeof goods.checked == 'undefined') {
+								_this.$set(goods, "checked", obj.checked);
+							} else {
+								goods.checked = obj.checked
+							}
+						})
+					}
+
+				}
+			})
+			mui.init();
+			mui(".footer").on('tap', 'li', function() {
+				var target = this.getAttribute("data-target");
+				console.log(target);
+				mui.openWindow({
+					id: target,
+					url: target + '.html',
+					createNew: false,
+					show: {
+						autoShow: true, //页面loaded事件发生后自动显示，默认为true
+						aniShow: 'fade-in', //页面显示动画，默认为”slide-in-right“；fade-in
+						//duration: 100, //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+						event: 'titleUpdate', //页面显示时机，默认为titleUpdate事件时显示
+						extras: {} //窗口动画是否使用图片加速
+					},
+					waiting: {
+						autoShow: false, //自动显示等待框，默认为true
+						title: '', //等待对话框上显示的提示内容
+						options: {
+							background: 'rgba(0,0,0,.2)'
+						}
+					}
+				});
+			})
+			// H5 plus事件处理
+			function plusReady(){
+			}
+			if(window.plus){
+				plusReady();
+			}else{
+				document.addEventListener("plusready",plusReady,false);
+			}
+			
+			// 创建新窗口并设置开启硬件加速
+			function create(){
+				var styles={};
+				// 在Android5以上设备，如果默认没有开启硬件加速，则强制设置开启
+				if(!plus.webview.defaultHardwareAccelerated()&&parseInt(plus.os.version)>=5){
+					styles.hardwareAccelerated=true;
+				}
+				var w = plus.webview.create( "http://weibo.com/dhnetwork", "test", styles );
+				plus.webview.show( w ); // 显示窗口
+			}
+			//create();
+		</script>
+	</body>
+
+</html>

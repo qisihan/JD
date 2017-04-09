@@ -1,0 +1,69 @@
+{
+	"message":"SUCCESS",
+	"status":"200",
+	"cartList":[
+	    {
+	    	"shopId":1,
+	    	"shopName":"京东自营",
+	    	"shopUrl":"shop.html",
+	    	"isCoupon":true,
+	    	"isJoin":true,
+	    	"goods":[
+	    	   {
+	    		   "goodsName":"机械革命(MECHREVO)MR X6Ti 15.6英寸游戏笔记本(i7-6700HQ 8G)",
+	    		   "goodsParameter":"颜色:X6Ti【i7六代 128G】",
+	    		   "goodsPrice":"6999.00",
+	    		   "goodsImg":"img/goods/img31.jpg",
+	    		   "goodsNum":"1",
+	    		   "goodsActive":"已购满2500.00元，可加价449.00元换购商品，或查看其他活动商品",
+	    		   "goodsTips":"换购"
+	    	   },
+	    	   {
+	    		   "goodsName":"【京东超市】滴露Dettol消毒液500ml家居衣物消毒除菌液",
+	    		   "goodsParameter":"颜色:500ml",
+	    		   "goodsPrice":"33.90",
+	    		   "goodsImg":"img/goods/img32.jpg",
+	    		   "goodsNum":"1",
+	    		   "goodsActive":"购满99.00元，即享优惠，去凑单",
+	    		   "goodsTips":"满减"
+	    	   }
+	    	]
+	    },
+	    {
+	    	"shopId":2,
+	    	"shopName":"麦本本旗舰店",
+	    	"shopUrl":"shop.html",
+	    	"isCoupon":false,
+	    	"isJoin":true,
+	    	"goods":[
+	    	   {
+	    		   "goodsName":"机械革命(MECHREVO)MR X6Ti 15.6英寸游戏笔记本(i7-6700HQ 8G)",
+	    		   "goodsParameter":"颜色:X6Ti【i7六代 128G】",
+	    		   "goodsPrice":"6999.00",
+	    		   "goodsImg":"img/goods/img31.jpg",
+	    		   "goodsNum":"1",
+	    		   "goodsActive":"已购满2500.00元，可加价449.00元换购商品，或查看其他活动商品",
+	    		   "goodsTips":"换购"
+	    	   }
+	    	]
+	    },
+	    {
+	    	"shopId":2,
+	    	"shopName":"滴露旗舰店",
+	    	"shopUrl":"shop.html",
+	    	"isCoupon":false,
+	    	"isJoin":true,
+	    	"goods":[
+	    	   {
+	    		   "goodsName":"【京东超市】滴露Dettol消毒液500ml家居衣物消毒除菌液",
+	    		   "goodsParameter":"颜色:500ml",
+	    		   "goodsPrice":"33.90",
+	    		   "goodsImg":"img/goods/img32.jpg",
+	    		   "goodsNum":"1",
+	    		   "goodsActive":"购满99.00元，即享优惠，去凑单",
+	    		   "goodsTips":"满减"
+	    	   }
+	    	]
+	    }
+	]
+}
